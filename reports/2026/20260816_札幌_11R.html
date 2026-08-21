@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="ja" >
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026-08-16(日) 札幌 1回8日目 - レース結果レポート</title>
+<style>
+:root {
+  color-scheme: light;
+  --surface-1: #fcfcfb;
+  --plane: #f9f9f7;
+  --ink-1: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #4a3aa7;
+  --series-8: #e34948;
+  --good: #006300;
+  --critical: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface-1: #1a1a19;
+    --plane: #0d0d0d;
+    --ink-1: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255,255,255,0.10);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-6: #008300;
+    --series-7: #9085e9;
+    --series-8: #e66767;
+    --good: #0ca30c;
+    --critical: #e05a5a;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-1: #1a1a19;
+  --plane: #0d0d0d;
+  --ink-1: #ffffff;
+  --ink-2: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255,255,255,0.10);
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+  --good: #0ca30c;
+  --critical: #e05a5a;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--plane);
+  color: var(--ink-1);
+  font-family: system-ui, -apple-system, "Segoe UI", "Yu Gothic UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 80px; }
+
+header.top {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px;
+  padding-bottom: 16px; margin-bottom: 24px; border-bottom: 1px solid var(--border);
+}
+header.top h1 { font-size: 20px; margin: 0; font-weight: 650; }
+header.top .sub { color: var(--ink-2); font-size: 13px; }
+header.top .spacer { flex: 1 1 auto; }
+button.theme {
+  background: var(--surface-1); color: var(--ink-2); border: 1px solid var(--border);
+  border-radius: 6px; padding: 5px 12px; font: inherit; font-size: 13px; cursor: pointer;
+}
+button.theme:hover { color: var(--ink-1); }
+
+h2.sec {
+  font-size: 17px; font-weight: 650; margin: 40px 0 4px;
+  padding-bottom: 6px; border-bottom: 2px solid var(--axis);
+}
+h3.sub { font-size: 14px; font-weight: 650; margin: 28px 0 10px; color: var(--ink-1); }
+p.note { color: var(--ink-2); font-size: 12.5px; margin: 4px 0 14px; }
+
+.card {
+  background: var(--surface-1); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px; margin-bottom: 18px;
+}
+
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+.tscroll { overflow-x: auto; }
+th, td { padding: 5px 9px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--grid); }
+th { color: var(--ink-2); font-weight: 600; font-size: 12px; text-align: right;
+     border-bottom: 1px solid var(--axis); position: sticky; top: 0; background: var(--surface-1); }
+td.l, th.l { text-align: left; }
+tbody tr:hover { background: color-mix(in srgb, var(--muted) 10%, transparent); }
+td.win { font-weight: 650; }
+.pos { color: var(--critical); font-weight: 650; }
+.neg { color: var(--good); }
+.dim { color: var(--muted); }
+
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 12px; }
+.legend button, .chips button {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: transparent; border: 1px solid var(--border); border-radius: 999px;
+  padding: 3px 11px 3px 8px; font: inherit; font-size: 12px; color: var(--ink-2); cursor: pointer;
+}
+.legend button:hover, .chips button:hover { border-color: var(--axis); color: var(--ink-1); }
+.legend button[aria-pressed="false"], .chips button[aria-pressed="false"] { opacity: 0.4; }
+.legend button[aria-pressed="true"], .chips button[aria-pressed="true"] { color: var(--ink-1); }
+.swatch { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+.swatch.dash { background: none !important; border-top: 3px dashed currentColor; height: 0; border-radius: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-bottom: 12px; align-items: center; }
+.chips .lbl { font-size: 12px; color: var(--ink-2); margin-right: 4px; }
+
+.tip {
+  position: absolute; pointer-events: none; z-index: 20; opacity: 0;
+  background: var(--surface-1); color: var(--ink-1);
+  border: 1px solid var(--axis); border-radius: 7px; padding: 7px 10px;
+  font-size: 12px; line-height: 1.5; white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.16); transition: opacity .08s;
+  font-variant-numeric: tabular-nums;
+}
+.tip b { font-weight: 650; }
+.tip .row { display: flex; align-items: center; gap: 6px; }
+.tip .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(430px, 1fr)); gap: 18px; }
+@media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } }
+
+.rno {
+  font-size: 13px; font-weight: 700; color: var(--surface-1);
+  background: var(--ink-2); border-radius: 5px; padding: 1px 8px; flex: none;
+}
+.rname { font-size: 16px; font-weight: 650; }
+.rmeta { color: var(--ink-2); font-size: 12.5px; }
+.kv { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 10px 0 14px; font-size: 12.5px; }
+.kv span { color: var(--ink-2); }
+.kv b { color: var(--ink-1); font-weight: 650; font-variant-numeric: tabular-nums; }
+.lapline { font-variant-numeric: tabular-nums; font-size: 12.5px; }
+details.race { margin-bottom: 12px; }
+details.race > summary {
+  cursor: pointer; padding: 10px 14px; background: var(--surface-1);
+  border: 1px solid var(--border); border-radius: 10px; list-style: none;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
+}
+details.race > summary::-webkit-details-marker { display: none; }
+details.race[open] > summary { border-radius: 10px 10px 0 0; border-bottom: none; }
+details.race > .body {
+  border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px;
+  background: var(--surface-1); padding: 16px;
+}
+.empty { color: var(--muted); font-size: 13px; padding: 20px 0; text-align: center; }
+
+.badge {
+  display: inline-block; font-size: 11px; line-height: 1.5; padding: 0 7px;
+  border: 1px solid var(--border); border-radius: 999px; color: var(--ink-2);
+}
+.badge.mark {
+  border-color: var(--axis); color: var(--ink-1); font-weight: 650;
+  background: color-mix(in srgb, var(--muted) 16%, transparent);
+}
+.verdict { font-size: 13px; line-height: 1.7; }
+.verdict .head { font-weight: 650; font-size: 14px; margin-bottom: 4px; }
+.verdict .line { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.verdict .line b { color: var(--ink-1); font-weight: 650; }
+.verdict .concl { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--grid); }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <h1>2026-08-16(日) 札幌 1回8日目</h1>
+  <span class="sub">1レース / 作成 2026-08-21 14:49</span>
+  <span class="spacer"></span>
+  <button class="theme" id="themebtn" type="button">ダーク表示</button>
+</header>
+
+
+<section data-surface="芝" data-label="芝">
+  <h2 class="sec">芝 (1R)</h2>
+  <div class="card tscroll"><table><thead><tr><th class="l">R</th><th class="l">レース名</th><th class="l">クラス</th><th class="l">距離</th><th class="l">馬場</th><th class="l">勝ち馬</th><th class="l">騎手</th><th class="r">人気</th><th class="r">勝ちタイム</th><th class="r">平均タイム</th><th class="r">vs平均</th><th class="r">前後半差</th><th class="r">PBI</th><th class="r">ΔPBI</th><th class="r">Δテン</th><th class="r">Δ中間</th><th class="r">Δ前半</th><th class="r">Δ上り</th><th class="l">馬場判定</th><th class="r">上り3F</th><th class="r">頭数</th><th class="l">4角通過(着順)</th></tr></thead><tbody><tr><td class="l"><b>11R</b></td><td class="l">札幌記念 G2</td><td class="l">オープン</td><td class="l">芝2000m 右</td><td class="l">良</td><td class="l win">シェイクユアハート</td><td class="l">古川吉</td><td>3</td><td>1:58.2</td><td>2:01.1</td><td>-2.93</td><td>+0.51</td><td>+1.3</td><td>-0.0</td><td>-1.8</td><td>-0.1</td><td>-0.8</td><td>-1.0</td><td class="l"><span class="badge mark">高速</span></td><td>34.6</td><td>16</td><td class="l lapline"><span class="dim">10</span>(<span class="dim">9</span>,<span class="dim">7</span>,<b>2</b>)(<b>3</b>,<b>5</b>,<span class="dim">6</span>)(<b>4</b>,<b>1</b>)(<span class="dim">11</span>,<span class="dim">8</span>)(<span class="dim">15</span>,<span class="dim">16</span>)<span class="dim">14</span>(<span class="dim">13</span>,<span class="dim">12</span>)</td></tr></tbody></table></div>
+
+  <h3 class="sub">馬場読み</h3>
+  <p class="note">Δ は同じ場・コース・距離・<b>同じクラス</b>の平年値との差。
+    ラップの Δ は ＋=平均より遅い。「前半」は上がり3Fを除いた全区間の3F換算で、
+    前後半差の前半と同じものです (テン3F は最初の600mだけ)。</p>
+  <p class="note"><b>ΔPBI</b> は「そのレースがこの条件にしては前有利だったか」。
+    PBI の生値は 0 が中立ではなく (前にいること自体が有利なので全レースの約8割が正、
+    平均 +1.2)、しかも水準が条件で大きく違うため (小倉ダ +2.1 / 阪神芝 +0.5、
+    新馬 +2.0 / 3勝 +0.5)、平年値との差で見ます。
+    <b>1レース単位の指標です</b> — 実データでは条件差を除いた PBI のばらつきの
+    98%がレース固有のノイズで、その日の全レースを平均しても馬場の前有利度は測れません
+    (午前の平均は午後を r=0.04 でしか予測しない)。その日の馬場については下の
+    ラップ側 (午前→午後 r=0.57) を見てください。
+    Δ前後半差 × ΔPBI の図は縦横とも平年比で目盛りを固定しているため、
+    原点が「この条件では普通のレース」、範囲外のレースは描かれません
+    (図の右下に「軸の外 ○点」と出ます)。</p>
+  <div class="card verdict"></div>
+  <div class="card pbi-bars"></div>
+  <div class="grid2">
+    <div class="card sc-fb-pbi"></div>
+    <div class="card sc-tough"></div>
+  </div>
+  <div class="card lapdev"></div>
+
+  <h3 class="sub">ラップ推移</h3>
+  <div class="card lapchart"></div>
+
+  <h3 class="sub">散布図</h3>
+  <p class="note">点にカーソルを合わせると馬名と数値が出ます。
+    凡例をクリックすると、<b>この散布図4枚から</b>そのレースを消せます
+    (上のグラフは常に全レース表示)。9レース目以降は点の形で見分けます。</p>
+  <div class="chips"><span class="lbl">表示するレース:</span></div>
+  <div class="grid2">
+    <div class="card sc-margin-last3f"></div>
+    <div class="card sc-margin-umaban"></div>
+    <div class="card sc-corner4-last3f"></div>
+    <div class="card sc-dist-last3f"></div>
+  </div>
+</section>
+<h2 class="sec">レース詳細</h2>
+<p class="note">見出しをクリックすると全出走馬・ラップ・コーナー通過順・払戻が開きます。
+  通過順の赤字は1〜5着の馬です。</p>
+<details class="race"><summary><span class="rno">11R</span><span class="rname">札幌記念 G2</span><span class="rmeta">芝2000m 良 / オープン / 16頭 / 勝ち 1:58.2</span></summary><div class="body"><div class="kv"><span>勝ちタイム</span><b>1:58.2</b><span>平均タイム</span><b>2:01.1</b><span>vs平均</span><b>-2.93</b><span>前後半差</span><b>+0.51</b><span>天候/馬場</span><b>晴 / 良</b><span>発走</span><b>15:45</b><span>頭数</span><b>16頭</b></div><div class="tscroll"><table><thead><tr><th class="r">着</th><th class="r">枠</th><th class="r">馬番</th><th class="l">馬名</th><th class="l">性齢</th><th class="r">斤量</th><th class="l">騎手</th><th class="r">タイム</th><th class="r">着差</th><th class="r">着差秒</th><th class="r">人気</th><th class="r">オッズ</th><th class="r">上り3F</th><th class="l">通過順</th><th class="l">厩舎</th><th class="r">馬体重</th></tr></thead><tbody><tr class="win"><td>1</td><td>8</td><td>15</td><td class="l">シェイクユアハート</td><td class="l">牡6</td><td>58.0</td><td class="l">古川吉</td><td>1:58.2</td><td></td><td>0.0</td><td>3</td><td>6.8</td><td>34.6</td><td class="l lapline">12-10-8-8</td><td class="l">栗東宮</td><td>450(-6)</td></tr><tr><td>2</td><td>4</td><td>8</td><td class="l">サクラファレル</td><td class="l">牡4</td><td>58.0</td><td class="l">佐々木</td><td>1:58.6</td><td>2.1/2</td><td>0.4</td><td>5</td><td>9.2</td><td>35.2</td><td class="l lapline">6-5-4-2</td><td class="l">美浦堀</td><td>514(-2)</td></tr><tr><td>3</td><td>7</td><td>14</td><td class="l">レディネス</td><td class="l">牡4</td><td>58.0</td><td class="l">横山典</td><td>1:58.8</td><td>1.1/4</td><td>0.6</td><td>10</td><td>36.3</td><td>35.4</td><td class="l lapline">3-3-4-5</td><td class="l">栗東昆</td><td>500(+16)</td></tr><tr><td>4</td><td>3</td><td>6</td><td class="l">ローシャムパーク</td><td class="l">牡7</td><td>58.0</td><td class="l">池添</td><td>1:58.8</td><td>クビ</td><td>0.6</td><td>9</td><td>20.8</td><td>35.1</td><td class="l lapline">10-10-10-8</td><td class="l">美浦田中博</td><td>506(-4)</td></tr><tr><td>5</td><td>7</td><td>13</td><td class="l">グランディア</td><td class="l">セ7</td><td>58.0</td><td class="l">西村淳</td><td>1:58.9</td><td>アタマ</td><td>0.7</td><td>6</td><td>10.2</td><td>35.4</td><td class="l lapline">10-8-6-5</td><td class="l">栗東中内田</td><td>488(0)</td></tr><tr><td>6</td><td>2</td><td>4</td><td class="l">マジックサンズ</td><td class="l">牡4</td><td>58.0</td><td class="l">横山和</td><td>1:59.0</td><td>1/2</td><td>0.8</td><td>4</td><td>7.2</td><td>35.3</td><td class="l lapline">15-13-10-5</td><td class="l">栗東須貝</td><td>518(+4)</td></tr><tr><td>7</td><td>4</td><td>7</td><td class="l">ショウヘイ</td><td class="l">牡4</td><td>58.0</td><td class="l">川田</td><td>1:59.2</td><td>1.1/4</td><td>1.0</td><td>1</td><td>4.1</td><td>35.9</td><td class="l lapline">4-3-2-2</td><td class="l">栗東友道</td><td>464(-12)</td></tr><tr><td>8</td><td>5</td><td>9</td><td class="l">マイネルモーント</td><td class="l">牡6</td><td>58.0</td><td class="l">斎藤</td><td>1:59.3</td><td>1</td><td>1.1</td><td>12</td><td>76.5</td><td>35.2</td><td class="l lapline">13-13-15-10</td><td class="l">美浦高木</td><td>466(+2)</td></tr><tr><td>9</td><td>5</td><td>10</td><td class="l">アドマイヤテラ</td><td class="l">牡5</td><td>58.0</td><td class="l">坂井</td><td>1:59.4</td><td>3/4</td><td>1.2</td><td>2</td><td>4.4</td><td>36.1</td><td class="l lapline">8-6-2-2</td><td class="l">栗東友道</td><td>494(-6)</td></tr><tr><td>10</td><td>8</td><td>16</td><td class="l">ホウオウビスケッツ</td><td class="l">牡6</td><td>58.0</td><td class="l">岩田康</td><td>1:59.5</td><td>クビ</td><td>1.3</td><td>8</td><td>13.1</td><td>36.4</td><td class="l lapline">1-1-1-1</td><td class="l">美浦奥村武</td><td>504(-8)</td></tr><tr><td>11</td><td>6</td><td>12</td><td class="l">ゼンダンハヤブサ</td><td class="l">牡4</td><td>58.0</td><td class="l">酒井</td><td>1:59.5</td><td>クビ</td><td>1.3</td><td>13</td><td>77.0</td><td>35.6</td><td class="l lapline">13-13-12-10</td><td class="l">栗東橋田</td><td>444(+2)</td></tr><tr><td>12</td><td>6</td><td>11</td><td class="l">アラタ</td><td class="l">牡9</td><td>58.0</td><td class="l">大野</td><td>1:59.7</td><td>1.1/4</td><td>1.5</td><td>15</td><td>151.8</td><td>35.4</td><td class="l lapline">16-16-16-15</td><td class="l">美浦和田勇</td><td>472(-8)</td></tr><tr><td>13</td><td>2</td><td>3</td><td class="l">ピンクジン</td><td class="l">牝6</td><td>56.0</td><td class="l">黛</td><td>2:00.0</td><td>1.1/2</td><td>1.8</td><td>16</td><td>267.2</td><td>36.1</td><td class="l lapline">9-10-12-15</td><td class="l">美浦室井</td><td>448(+2)</td></tr><tr><td>14</td><td>1</td><td>2</td><td class="l">イガッチ</td><td class="l">牡4</td><td>58.0</td><td class="l">吉田隼</td><td>2:00.7</td><td>4</td><td>2.5</td><td>11</td><td>73.9</td><td>37.1</td><td class="l lapline">5-6-8-14</td><td class="l">栗東笹田</td><td>488(+6)</td></tr><tr><td>15</td><td>1</td><td>1</td><td class="l">オニャンコポン</td><td class="l">セ7</td><td>58.0</td><td class="l">横山琉</td><td>2:00.7</td><td>クビ</td><td>2.5</td><td>14</td><td>81.7</td><td>37.2</td><td class="l lapline">2-2-6-12</td><td class="l">美浦小島</td><td>462(-6)</td></tr><tr><td>16</td><td>3</td><td>5</td><td class="l">エコロヴァルツ</td><td class="l">牡5</td><td>58.0</td><td class="l">横山武</td><td>2:00.8</td><td>1/2</td><td>2.6</td><td>7</td><td>12.5</td><td>36.9</td><td class="l lapline">7-8-12-12</td><td class="l">栗東牧浦</td><td>494(-2)</td></tr></tbody></table></div><h3 class="sub">ラップ</h3><div class="tscroll"><table><thead><tr><th class="l">区間</th><th>200m</th><th>400m</th><th>600m</th><th>800m</th><th>1000m</th><th>1200m</th><th>1400m</th><th>1600m</th><th>1800m</th><th>2000m</th></tr></thead><tbody><tr><td class="l">累積</td><td>12.4</td><td>22.6</td><td>34.2</td><td>47.0</td><td>59.4</td><td>1:11.2</td><td>1:23.1</td><td>1:34.9</td><td>1:46.8</td><td>1:58.2</td></tr><tr><td class="l">区間</td><td>12.4</td><td>10.2</td><td>11.6</td><td>12.8</td><td>12.4</td><td>11.8</td><td>11.9</td><td>11.8</td><td>11.9</td><td>11.4</td></tr></tbody></table></div><h3 class="sub">コーナー通過順</h3><div class="tscroll"><table><thead><tr><th class="l">コーナー</th><th class="l">馬番</th><th class="l">着順に変換</th></tr></thead><tbody><tr><td class="l">1コーナー</td><td class="l lapline">16,1-14,7,2,8,5,10,3(6,13)15(9,12)4,11</td><td class="l lapline"><span class="dim">10</span>,<span class="dim">15</span>-<b>3</b>,<span class="dim">7</span>,<span class="dim">14</span>,<b>2</b>,<span class="dim">16</span>,<span class="dim">9</span>,<span class="dim">13</span>(<b>4</b>,<b>5</b>)<b>1</b>(<span class="dim">8</span>,<span class="dim">11</span>)<span class="dim">6</span>,<span class="dim">12</span></td></tr><tr><td class="l">2コーナー</td><td class="l lapline">16,1(14,7)8(2,10)(5,13)(3,6,15)(9,12,4)11</td><td class="l lapline"><span class="dim">10</span>,<span class="dim">15</span>(<b>3</b>,<span class="dim">7</span>)<b>2</b>(<span class="dim">14</span>,<span class="dim">9</span>)(<span class="dim">16</span>,<b>5</b>)(<span class="dim">13</span>,<b>4</b>,<b>1</b>)(<span class="dim">8</span>,<span class="dim">11</span>,<span class="dim">6</span>)<span class="dim">12</span></td></tr><tr><td class="l">3コーナー</td><td class="l lapline">16(10,7)(14,8)(1,13)(2,15)(6,4)(3,5,12)9,11</td><td class="l lapline"><span class="dim">10</span>(<span class="dim">9</span>,<span class="dim">7</span>)(<b>3</b>,<b>2</b>)(<span class="dim">15</span>,<b>5</b>)(<span class="dim">14</span>,<b>1</b>)(<b>4</b>,<span class="dim">6</span>)(<span class="dim">13</span>,<span class="dim">16</span>,<span class="dim">11</span>)<span class="dim">8</span>,<span class="dim">12</span></td></tr><tr><td class="l">4コーナー</td><td class="l lapline">16(10,7,8)(14,13,4)(6,15)(12,9)(1,5)2(3,11)</td><td class="l lapline"><span class="dim">10</span>(<span class="dim">9</span>,<span class="dim">7</span>,<b>2</b>)(<b>3</b>,<b>5</b>,<span class="dim">6</span>)(<b>4</b>,<b>1</b>)(<span class="dim">11</span>,<span class="dim">8</span>)(<span class="dim">15</span>,<span class="dim">16</span>)<span class="dim">14</span>(<span class="dim">13</span>,<span class="dim">12</span>)</td></tr></tbody></table></div><h3 class="sub">払戻</h3><div class="tscroll"><table><thead><tr><th class="l">券種</th><th class="l">組番</th><th>払戻金</th><th>人気</th></tr></thead><tbody><tr><td class="l">単勝</td><td class="l lapline">15</td><td>680円</td><td>3人気</td></tr><tr><td class="l">複勝</td><td class="l lapline">15</td><td>260円</td><td>4人気</td></tr><tr><td class="l">複勝</td><td class="l lapline">8</td><td>320円</td><td>5人気</td></tr><tr><td class="l">複勝</td><td class="l lapline">14</td><td>970円</td><td>10人気</td></tr><tr><td class="l">枠連</td><td class="l lapline">4-8</td><td>690円</td><td>2人気</td></tr><tr><td class="l">馬連</td><td class="l lapline">8-15</td><td>3,020円</td><td>14人気</td></tr><tr><td class="l">ワイド</td><td class="l lapline">8-15</td><td>1,150円</td><td>15人気</td></tr><tr><td class="l">ワイド</td><td class="l lapline">14-15</td><td>4,320円</td><td>43人気</td></tr><tr><td class="l">ワイド</td><td class="l lapline">8-14</td><td>5,750円</td><td>52人気</td></tr><tr><td class="l">馬単</td><td class="l lapline">15-8</td><td>5,920円</td><td>24人気</td></tr><tr><td class="l">3連複</td><td class="l lapline">8-14-15</td><td>43,170円</td><td>127人気</td></tr><tr><td class="l">3連単</td><td class="l lapline">15-8-14</td><td>197,490円</td><td>605人気</td></tr></tbody></table></div></div></details>
+</div>
+<script>window.__REPORT__ = {"baseIds":["2026010108"],"venues":[{"date":"2026-08-16","weekday":"日","venue":"札幌","meeting":"1回8日目"}],"generated":"2026-08-21 14:49","avgDb":"race_calc.db","avgAvailable":true,"normAvailable":true,"races":[{"id":"202601010811","no":"11","venue":"札幌","date":"2026-08-16","name":"札幌記念","grade":"G2","cls":"オープン","cond":"サラ系３歳以上","surface":"芝","distance":2000,"distText":"芝2000m","turn":"右","courseDiv":"A","going":"良","weather":"晴","startAt":"15:45","fieldSize":16,"winner":"シェイクユアハート","winJockey":"古川吉","winNinki":"3","winLast3f":"34.6","winPassage":"12-10-8-8","winTime":"1:58.2","winSec":118.2,"avgTime":"2:01.1","avgSec":121.13,"vsAvg":-2.93,"frontBack":0.514,"pbi":1.291,"dPbi":-0.017,"pbiNorm":1.308,"pbiNormN":93,"pbiNormRelaxed":true,"ten3f":34.2,"mid3f":36.675,"fin3f":35.1,"front3f":35.614,"dTen":-1.833,"dMid":-0.05,"dFin":-1.033,"dFront":-0.814,"dFb":0.219,"normTen":36.033,"normMid":36.725,"normFin":36.133,"normFront":36.429,"normN":12,"normRelaxed":false,"verdict":"高速","laps":[12.4,10.2,11.6,12.8,12.4,11.8,11.9,11.8,11.9,11.4],"lapPoints":[200,400,600,800,1000,1200,1400,1600,1800,2000],"lapHeader":["200m","400m","600m","800m","1000m","1200m","1400m","1600m","1800m","2000m"],"cum":["12.4","22.6","34.2","47.0","59.4","1:11.2","1:23.1","1:34.9","1:46.8","1:58.2"],"corners":[{"name":"1コーナー","order":"16,1-14,7,2,8,5,10,3(6,13)15(9,12)4,11","conv":"10,15-3,7,14,2,16,9,13(4,5)1(8,11)6,12"},{"name":"2コーナー","order":"16,1(14,7)8(2,10)(5,13)(3,6,15)(9,12,4)11","conv":"10,15(3,7)2(14,9)(16,5)(13,4,1)(8,11,6)12"},{"name":"3コーナー","order":"16(10,7)(14,8)(1,13)(2,15)(6,4)(3,5,12)9,11","conv":"10(9,7)(3,2)(15,5)(14,1)(4,6)(13,16,11)8,12"},{"name":"4コーナー","order":"16(10,7,8)(14,13,4)(6,15)(12,9)(1,5)2(3,11)","conv":"10(9,7,2)(3,5,6)(4,1)(11,8)(15,16)14(13,12)"}],"corner4":"16(10,7,8)(14,13,4)(6,15)(12,9)(1,5)2(3,11)","corner4Conv":"10(9,7,2)(3,5,6)(4,1)(11,8)(15,16)14(13,12)","payouts":[{"券種":"単勝","組番":"15","払戻金":"680円","人気":"3人気"},{"券種":"複勝","組番":"15","払戻金":"260円","人気":"4人気"},{"券種":"複勝","組番":"8","払戻金":"320円","人気":"5人気"},{"券種":"複勝","組番":"14","払戻金":"970円","人気":"10人気"},{"券種":"枠連","組番":"4-8","払戻金":"690円","人気":"2人気"},{"券種":"馬連","組番":"8-15","払戻金":"3,020円","人気":"14人気"},{"券種":"ワイド","組番":"8-15","払戻金":"1,150円","人気":"15人気"},{"券種":"ワイド","組番":"14-15","払戻金":"4,320円","人気":"43人気"},{"券種":"ワイド","組番":"8-14","払戻金":"5,750円","人気":"52人気"},{"券種":"馬単","組番":"15-8","払戻金":"5,920円","人気":"24人気"},{"券種":"3連複","組番":"8-14-15","払戻金":"43,170円","人気":"127人気"},{"券種":"3連単","組番":"15-8-14","払戻金":"197,490円","人気":"605人気"}],"horses":[{"finish":"1","finishN":1,"waku":"8","umaban":"15","umabanN":15,"name":"シェイクユアハート","sexAge":"牡6","weight":"58.0","jockey":"古川吉","time":"1:58.2","margin":"","marginSec":0.0,"ninki":"3","ninkiN":3,"odds":"6.8","last3f":"34.6","last3fN":34.6,"passage":"12-10-8-8","corner4N":8,"stable":"栗東","trainer":"宮","bw":"450","bwDiff":"-6"},{"finish":"2","finishN":2,"waku":"4","umaban":"8","umabanN":8,"name":"サクラファレル","sexAge":"牡4","weight":"58.0","jockey":"佐々木","time":"1:58.6","margin":"2.1/2","marginSec":0.4,"ninki":"5","ninkiN":5,"odds":"9.2","last3f":"35.2","last3fN":35.2,"passage":"6-5-4-2","corner4N":2,"stable":"美浦","trainer":"堀","bw":"514","bwDiff":"-2"},{"finish":"3","finishN":3,"waku":"7","umaban":"14","umabanN":14,"name":"レディネス","sexAge":"牡4","weight":"58.0","jockey":"横山典","time":"1:58.8","margin":"1.1/4","marginSec":0.6,"ninki":"10","ninkiN":10,"odds":"36.3","last3f":"35.4","last3fN":35.4,"passage":"3-3-4-5","corner4N":5,"stable":"栗東","trainer":"昆","bw":"500","bwDiff":"+16"},{"finish":"4","finishN":4,"waku":"3","umaban":"6","umabanN":6,"name":"ローシャムパーク","sexAge":"牡7","weight":"58.0","jockey":"池添","time":"1:58.8","margin":"クビ","marginSec":0.6,"ninki":"9","ninkiN":9,"odds":"20.8","last3f":"35.1","last3fN":35.1,"passage":"10-10-10-8","corner4N":8,"stable":"美浦","trainer":"田中博","bw":"506","bwDiff":"-4"},{"finish":"5","finishN":5,"waku":"7","umaban":"13","umabanN":13,"name":"グランディア","sexAge":"セ7","weight":"58.0","jockey":"西村淳","time":"1:58.9","margin":"アタマ","marginSec":0.7,"ninki":"6","ninkiN":6,"odds":"10.2","last3f":"35.4","last3fN":35.4,"passage":"10-8-6-5","corner4N":5,"stable":"栗東","trainer":"中内田","bw":"488","bwDiff":"0"},{"finish":"6","finishN":6,"waku":"2","umaban":"4","umabanN":4,"name":"マジックサンズ","sexAge":"牡4","weight":"58.0","jockey":"横山和","time":"1:59.0","margin":"1/2","marginSec":0.8,"ninki":"4","ninkiN":4,"odds":"7.2","last3f":"35.3","last3fN":35.3,"passage":"15-13-10-5","corner4N":5,"stable":"栗東","trainer":"須貝","bw":"518","bwDiff":"+4"},{"finish":"7","finishN":7,"waku":"4","umaban":"7","umabanN":7,"name":"ショウヘイ","sexAge":"牡4","weight":"58.0","jockey":"川田","time":"1:59.2","margin":"1.1/4","marginSec":1.0,"ninki":"1","ninkiN":1,"odds":"4.1","last3f":"35.9","last3fN":35.9,"passage":"4-3-2-2","corner4N":2,"stable":"栗東","trainer":"友道","bw":"464","bwDiff":"-12"},{"finish":"8","finishN":8,"waku":"5","umaban":"9","umabanN":9,"name":"マイネルモーント","sexAge":"牡6","weight":"58.0","jockey":"斎藤","time":"1:59.3","margin":"1","marginSec":1.1,"ninki":"12","ninkiN":12,"odds":"76.5","last3f":"35.2","last3fN":35.2,"passage":"13-13-15-10","corner4N":10,"stable":"美浦","trainer":"高木","bw":"466","bwDiff":"+2"},{"finish":"9","finishN":9,"waku":"5","umaban":"10","umabanN":10,"name":"アドマイヤテラ","sexAge":"牡5","weight":"58.0","jockey":"坂井","time":"1:59.4","margin":"3/4","marginSec":1.2,"ninki":"2","ninkiN":2,"odds":"4.4","last3f":"36.1","last3fN":36.1,"passage":"8-6-2-2","corner4N":2,"stable":"栗東","trainer":"友道","bw":"494","bwDiff":"-6"},{"finish":"10","finishN":10,"waku":"8","umaban":"16","umabanN":16,"name":"ホウオウビスケッツ","sexAge":"牡6","weight":"58.0","jockey":"岩田康","time":"1:59.5","margin":"クビ","marginSec":1.3,"ninki":"8","ninkiN":8,"odds":"13.1","last3f":"36.4","last3fN":36.4,"passage":"1-1-1-1","corner4N":1,"stable":"美浦","trainer":"奥村武","bw":"504","bwDiff":"-8"},{"finish":"11","finishN":11,"waku":"6","umaban":"12","umabanN":12,"name":"ゼンダンハヤブサ","sexAge":"牡4","weight":"58.0","jockey":"酒井","time":"1:59.5","margin":"クビ","marginSec":1.3,"ninki":"13","ninkiN":13,"odds":"77.0","last3f":"35.6","last3fN":35.6,"passage":"13-13-12-10","corner4N":10,"stable":"栗東","trainer":"橋田","bw":"444","bwDiff":"+2"},{"finish":"12","finishN":12,"waku":"6","umaban":"11","umabanN":11,"name":"アラタ","sexAge":"牡9","weight":"58.0","jockey":"大野","time":"1:59.7","margin":"1.1/4","marginSec":1.5,"ninki":"15","ninkiN":15,"odds":"151.8","last3f":"35.4","last3fN":35.4,"passage":"16-16-16-15","corner4N":15,"stable":"美浦","trainer":"和田勇","bw":"472","bwDiff":"-8"},{"finish":"13","finishN":13,"waku":"2","umaban":"3","umabanN":3,"name":"ピンクジン","sexAge":"牝6","weight":"56.0","jockey":"黛","time":"2:00.0","margin":"1.1/2","marginSec":1.8,"ninki":"16","ninkiN":16,"odds":"267.2","last3f":"36.1","last3fN":36.1,"passage":"9-10-12-15","corner4N":15,"stable":"美浦","trainer":"室井","bw":"448","bwDiff":"+2"},{"finish":"14","finishN":14,"waku":"1","umaban":"2","umabanN":2,"name":"イガッチ","sexAge":"牡4","weight":"58.0","jockey":"吉田隼","time":"2:00.7","margin":"4","marginSec":2.5,"ninki":"11","ninkiN":11,"odds":"73.9","last3f":"37.1","last3fN":37.1,"passage":"5-6-8-14","corner4N":14,"stable":"栗東","trainer":"笹田","bw":"488","bwDiff":"+6"},{"finish":"15","finishN":15,"waku":"1","umaban":"1","umabanN":1,"name":"オニャンコポン","sexAge":"セ7","weight":"58.0","jockey":"横山琉","time":"2:00.7","margin":"クビ","marginSec":2.5,"ninki":"14","ninkiN":14,"odds":"81.7","last3f":"37.2","last3fN":37.2,"passage":"2-2-6-12","corner4N":12,"stable":"美浦","trainer":"小島","bw":"462","bwDiff":"-6"},{"finish":"16","finishN":16,"waku":"3","umaban":"5","umabanN":5,"name":"エコロヴァルツ","sexAge":"牡5","weight":"58.0","jockey":"横山武","time":"2:00.8","margin":"1/2","marginSec":2.6,"ninki":"7","ninkiN":7,"odds":"12.5","last3f":"36.9","last3fN":36.9,"passage":"7-8-12-12","corner4N":12,"stable":"栗東","trainer":"牧浦","bw":"494","bwDiff":"-2"}]}]};</script>
+<script>
+(function () {
+  "use strict";
+
+  var D = window.__REPORT__;
+  var SERIES = 8;
+  var fmt = function (v, d) { return v === null || v === undefined ? "-" : v.toFixed(d === undefined ? 1 : d); };
+  var sgn = function (v, d) {
+    if (v === null || v === undefined) return "-";
+    var s = v.toFixed(d === undefined ? 2 : d);
+    return v > 0 ? "+" + s : s;
+  };
+
+  /* レース番号順に固定スロットを割り当てる。フィルタしても色は動かない。 */
+  function slotOf(i) { return (i % SERIES) + 1; }
+  function colorOf(i) { return "var(--series-" + slotOf(i) + ")"; }
+  /* 8色を超えたら色は使い回さず、線種を第2の手がかりにする(実線→破線→点線) */
+  var DASHES = [null, "7 4", "1.5 3.5"];
+  function dashOf(i) { return DASHES[Math.min(Math.floor(i / SERIES), DASHES.length - 1)]; }
+  /* 点でも同じことを形でやる(丸→四角→三角)。線の破線と対応させる */
+  var SHAPES = ["circle", "square", "triangle"];
+  function shapeOf(i) { return SHAPES[Math.min(Math.floor(i / SERIES), SHAPES.length - 1)]; }
+  function markEl(shape, x, y, r) {
+    if (shape === "square")
+      return svgEl("rect", { x: x - r * 0.9, y: y - r * 0.9, width: r * 1.8, height: r * 1.8, rx: 1 });
+    if (shape === "triangle")
+      return svgEl("path", { d: "M" + x.toFixed(1) + " " + (y - r * 1.15).toFixed(1) +
+        "L" + (x + r).toFixed(1) + " " + (y + r * 0.75).toFixed(1) +
+        "L" + (x - r).toFixed(1) + " " + (y + r * 0.75).toFixed(1) + "Z" });
+    return svgEl("circle", { cx: x, cy: y, r: r });
+  }
+
+  /* SVG の clipPath 用に重複しない id を配る */
+  var _uid = 0;
+  function uid(prefix) { return prefix + "-" + (++_uid); }
+
+  /* 同日に複数場を取り込んだときは場名を付けて区別する */
+  var MULTI_VENUE = (function () {
+    var s = {};
+    D.races.forEach(function (r) { s[r.venue] = 1; });
+    return Object.keys(s).length > 1;
+  })();
+  function longLabel(r) { return (MULTI_VENUE ? r.venue + " " : "") + r.no + "R " + r.name; }
+  function shortLabel(r) { return (MULTI_VENUE ? r.venue : "") + r.no + "R"; }
+
+  function el(tag, cls, txt) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (txt !== undefined) e.textContent = txt;
+    return e;
+  }
+  function svgEl(tag, attrs) {
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) if (attrs[k] !== null && attrs[k] !== undefined) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  /* 刻み幅を表すのに必要な小数桁。0.1刻みなら1桁、2.5刻みなら1桁 */
+  function decimalsFor(step) {
+    var d = 0, s = Math.abs(step);
+    while (d < 6 && Math.abs(s - Math.round(s)) > 1e-9) { s *= 10; d++; }
+    return d;
+  }
+  /* 二進浮動小数の誤差を落とす。0.30000000000000004 のような目盛りを防ぐ */
+  function clean(v, dec) { return +v.toFixed(dec + 3); }
+
+  /* きりのよい目盛りを作る */
+  function niceTicks(lo, hi, count) {
+    if (!isFinite(lo) || !isFinite(hi)) return { lo: 0, hi: 1, ticks: [0, 1], dec: 0 };
+    if (lo === hi) { lo -= 0.5; hi += 0.5; }
+    var raw = (hi - lo) / Math.max(1, count);
+    var mag = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10));
+    var norm = raw / mag;
+    var step = (norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 2.5 ? 2.5 : norm <= 5 ? 5 : 10) * mag;
+    var dec = decimalsFor(step);
+    var t0 = Math.floor(lo / step) * step, t1 = Math.ceil(hi / step) * step;
+    var ticks = [];
+    for (var i = 0; t0 + step * i <= t1 + step * 1e-6; i++) ticks.push(clean(t0 + step * i, dec));
+    return { lo: clean(t0, dec), hi: clean(t1, dec), ticks: ticks, dec: dec };
+  }
+
+  /* 目盛りの端をデータに合わせず固定する。レースをまたいで同じ物差しで見たいとき用 */
+  function fixedTicks(lo, hi) {
+    var t = niceTicks(lo, hi, Math.min(10, Math.max(4, Math.round(Math.abs(hi - lo)))));
+    return {
+      lo: lo, hi: hi, dec: t.dec,
+      ticks: t.ticks.filter(function (v) { return v >= lo - 1e-9 && v <= hi + 1e-9; })
+    };
+  }
+
+  /* 200m 目盛りをどこから打ち始めるか。ゴール(最長距離)から 200m ずつ遡り、
+     割り切れない端数は最初の1区間だけで吸収する。
+     1800m→200,400,…,1800 / 2500m→100,300,…,2500 / 1150m→150,350,…,1150 */
+  function xOffset(xHi) {
+    var rem = xHi % 200;
+    return rem === 0 ? 200 : rem;
+  }
+
+  function tooltip(host) {
+    var t = el("div", "tip");
+    host.appendChild(t);
+    return {
+      show: function (htmlStr, x, y) {
+        t.innerHTML = htmlStr;
+        t.style.opacity = 1;
+        var w = t.offsetWidth, h = t.offsetHeight, hw = host.clientWidth;
+        var left = x + 14; if (left + w > hw) left = x - w - 14; if (left < 0) left = 0;
+        var top = y - h - 12; if (top < 0) top = y + 16;
+        t.style.left = left + "px"; t.style.top = top + "px";
+      },
+      hide: function () { t.style.opacity = 0; }
+    };
+  }
+
+  /* ------------------------------------------------ 折れ線(ラップ推移) */
+  function lineChart(host, races, opt, state) {
+    host.innerHTML = "";
+    var usable = races.filter(function (r) { return r.laps && r.laps.length; });
+    if (!usable.length) { host.appendChild(el("p", "empty", "ラップデータがありません")); return; }
+
+    var W = 900, H = 340, m = { t: 14, r: 16, b: 40, l: 46 };
+    var xs = [], ys = [];
+    usable.forEach(function (r) {
+      r.lapPoints.forEach(function (p) { xs.push(p); });
+      r.laps.forEach(function (v) { ys.push(v); });
+    });
+    ys.push(opt.refValue);
+    var xLo = 0, xHi = Math.max.apply(null, xs);
+    var yT = niceTicks(Math.min.apply(null, ys), Math.max.apply(null, ys), 6);
+
+    var px = function (v) { return m.l + (v - xLo) / (xHi - xLo) * (W - m.l - m.r); };
+    var py = function (v) { return m.t + (yT.hi - v) / (yT.hi - yT.lo) * (H - m.t - m.b); };
+
+    var wrap = el("div", "chart");
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "img" });
+    svg.appendChild(svgEl("title", {})).textContent = opt.title;
+
+    yT.ticks.forEach(function (v) {
+      svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: py(v), y2: py(v),
+        stroke: "var(--grid)", "stroke-width": 1 }));
+      var lb = svgEl("text", { x: m.l - 8, y: py(v) + 4, "text-anchor": "end",
+        fill: "var(--muted)", "font-size": 11 });
+      lb.textContent = v.toFixed(1);
+      svg.appendChild(lb);
+    });
+    /* 横軸はラップの区切りと同じ 200m 刻み。2500m のように 200 で割り切れない
+       距離は最初の1区間(100m/150m)で端数を吸収し、以降は 200m ごとにゴールまで
+       きっちり並ぶ。スタート地点(0m)は区間タイムを持たないので目盛りを打たない。 */
+    for (var xv = xOffset(xHi); xv <= xHi + 1e-6; xv += 200) {
+      svg.appendChild(svgEl("line", { x1: px(xv), x2: px(xv), y1: m.t, y2: H - m.b,
+        stroke: "var(--grid)", "stroke-width": 1 }));
+      var xlb = svgEl("text", { x: px(xv), y: H - m.b + 18, "text-anchor": "middle",
+        fill: "var(--muted)", "font-size": 11 });
+      xlb.textContent = xv;
+      svg.appendChild(xlb);
+    }
+    svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: py(yT.lo), y2: py(yT.lo),
+      stroke: "var(--axis)", "stroke-width": 1 }));
+    var xtitle = svgEl("text", { x: (m.l + W - m.r) / 2, y: H - 4, "text-anchor": "middle",
+      fill: "var(--ink-2)", "font-size": 12 });
+    xtitle.textContent = "通過地点 (m)";
+    svg.appendChild(xtitle);
+    var ytitle = svgEl("text", { x: 0, y: 0, "text-anchor": "middle", fill: "var(--ink-2)",
+      "font-size": 12, transform: "translate(13," + (m.t + (H - m.t - m.b) / 2) + ") rotate(-90)" });
+    ytitle.textContent = "区間タイム (秒/200m)";
+    svg.appendChild(ytitle);
+
+    /* 基準線は系列ではなく注記として描く */
+    if (opt.refValue >= yT.lo && opt.refValue <= yT.hi) {
+      svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: py(opt.refValue), y2: py(opt.refValue),
+        stroke: "var(--muted)", "stroke-width": 1, "stroke-dasharray": "5 4" }));
+      var rl = svgEl("text", { x: W - m.r, y: py(opt.refValue) - 5, "text-anchor": "end",
+        fill: "var(--muted)", "font-size": 11 });
+      rl.textContent = "基準 " + opt.refValue.toFixed(1) + "秒";
+      svg.appendChild(rl);
+    }
+
+    var paths = [];
+    usable.forEach(function (r, i) {
+      var idx = r._slot;
+      var d = r.laps.map(function (v, k) {
+        return (k ? "L" : "M") + px(r.lapPoints[k]).toFixed(1) + " " + py(v).toFixed(1);
+      }).join(" ");
+      var g = svgEl("g", {});
+      var p = svgEl("path", { d: d, fill: "none", stroke: colorOf(idx), "stroke-width": 2,
+        "stroke-linejoin": "round", "stroke-linecap": "round" });
+      if (dashOf(idx)) p.setAttribute("stroke-dasharray", dashOf(idx));
+      g.appendChild(p);
+      r.laps.forEach(function (v, k) {
+        var c = markEl(shapeOf(idx), px(r.lapPoints[k]), py(v), 2.8);
+        c.setAttribute("fill", colorOf(idx));
+        c.setAttribute("stroke", "var(--surface-1)");
+        c.setAttribute("stroke-width", 1.5);
+        g.appendChild(c);
+      });
+      svg.appendChild(g);
+      paths.push({ race: r, g: g, idx: idx });
+    });
+
+    var cross = svgEl("line", { y1: m.t, y2: H - m.b, stroke: "var(--axis)",
+      "stroke-width": 1, opacity: 0 });
+    svg.appendChild(cross);
+    wrap.appendChild(svg);
+    host.appendChild(wrap);
+    var tip = tooltip(wrap);
+
+    svg.addEventListener("mousemove", function (ev) {
+      var box = svg.getBoundingClientRect();
+      var sx = (ev.clientX - box.left) / box.width * W;
+      if (sx < m.l || sx > W - m.r) { tip.hide(); cross.setAttribute("opacity", 0); return; }
+      var val = xLo + (sx - m.l) / (W - m.l - m.r) * (xHi - xLo);
+      var pts = [];
+      paths.forEach(function (s) {
+        if (state.off[s.race.id]) return;
+        var best = -1, bd = 1e9;
+        s.race.lapPoints.forEach(function (p, k) {
+          var dd = Math.abs(p - val); if (dd < bd) { bd = dd; best = k; }
+        });
+        if (best >= 0 && bd <= 110) pts.push({ s: s, k: best });
+      });
+      if (!pts.length) { tip.hide(); cross.setAttribute("opacity", 0); return; }
+      var anchor = pts[0].s.race.lapPoints[pts[0].k];
+      cross.setAttribute("x1", px(anchor)); cross.setAttribute("x2", px(anchor));
+      cross.setAttribute("opacity", 1);
+      var rows = pts.map(function (o) {
+        return '<div class="row"><span class="dot" style="background:' + colorOf(o.s.idx) + '"></span>' +
+          esc(longLabel(o.s.race)) + " <b>" + fmt(o.s.race.laps[o.k]) + "</b></div>";
+      }).join("");
+      tip.show("<b>" + anchor + "m</b>" + rows,
+        (ev.clientX - box.left) / box.width * wrap.clientWidth,
+        (ev.clientY - box.top) / box.height * (wrap.clientHeight || H));
+    });
+    svg.addEventListener("mouseleave", function () { tip.hide(); cross.setAttribute("opacity", 0); });
+
+    function repaint() {
+      paths.forEach(function (s) {
+        s.g.style.display = state.off[s.race.id] ? "none" : "";
+      });
+    }
+    repaint();
+    return repaint;
+  }
+
+  /* ------------------------------------------------ 散布図 */
+  function scatter(host, points, opt, state) {
+    host.innerHTML = "";
+    var use = points.filter(function (p) {
+      return p.x !== null && p.x !== undefined && p.y !== null && p.y !== undefined;
+    });
+    if (!use.length) { host.appendChild(el("p", "empty", "データがありません")); return null; }
+
+    var W = 460, H = 330, m = { t: 14, r: 14, b: 44, l: 50 };
+    /* 0 を基準線として引くなら、データが片側に寄っていても 0 を軸に含める */
+    var xv = use.map(function (p) { return p.x; }), yv = use.map(function (p) { return p.y; });
+    if (opt.zeroX) xv.push(0);
+    if (opt.zeroY) yv.push(0);
+    var xT = opt.xRange ? fixedTicks(opt.xRange[0], opt.xRange[1])
+                        : niceTicks(Math.min.apply(null, xv), Math.max.apply(null, xv), 5);
+    var yT = opt.yRange ? fixedTicks(opt.yRange[0], opt.yRange[1])
+                        : niceTicks(Math.min.apply(null, yv), Math.max.apply(null, yv), 5);
+    var px = function (v) { return m.l + (v - xT.lo) / (xT.hi - xT.lo) * (W - m.l - m.r); };
+    var py = function (v) { return m.t + (yT.hi - v) / (yT.hi - yT.lo) * (H - m.t - m.b); };
+    var inRange = function (p) {
+      return p.x >= xT.lo && p.x <= xT.hi && p.y >= yT.lo && p.y <= yT.hi;
+    };
+    var outside = use.filter(function (p) { return !inRange(p); }).length;
+
+    var wrap = el("div", "chart");
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "img" });
+    svg.appendChild(svgEl("title", {})).textContent = opt.title;
+
+    yT.ticks.forEach(function (v) {
+      svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: py(v), y2: py(v),
+        stroke: "var(--grid)", "stroke-width": 1 }));
+      var lb = svgEl("text", { x: m.l - 7, y: py(v) + 4, "text-anchor": "end",
+        fill: "var(--muted)", "font-size": 11 });
+      lb.textContent = opt.yFmt ? opt.yFmt(v) : v.toFixed(yT.dec);
+      svg.appendChild(lb);
+    });
+    xT.ticks.forEach(function (v) {
+      var lb = svgEl("text", { x: px(v), y: H - m.b + 17, "text-anchor": "middle",
+        fill: "var(--muted)", "font-size": 11 });
+      lb.textContent = opt.xFmt ? opt.xFmt(v) : v.toFixed(xT.dec);
+      svg.appendChild(lb);
+    });
+    /* 0 の位置がスケール内にあれば基準線として引く */
+    [["x", 0], ["y", 0]].forEach(function (o) {
+      if (!opt["zero" + o[0].toUpperCase()]) return;
+      if (o[0] === "x" && 0 > xT.lo && 0 < xT.hi)
+        svg.appendChild(svgEl("line", { x1: px(0), x2: px(0), y1: m.t, y2: H - m.b,
+          stroke: "var(--axis)", "stroke-width": 1, "stroke-dasharray": "4 4" }));
+      if (o[0] === "y" && 0 > yT.lo && 0 < yT.hi)
+        svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: py(0), y2: py(0),
+          stroke: "var(--axis)", "stroke-width": 1, "stroke-dasharray": "4 4" }));
+    });
+    svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b,
+      stroke: "var(--axis)", "stroke-width": 1 }));
+    svg.appendChild(svgEl("line", { x1: m.l, x2: m.l, y1: m.t, y2: H - m.b,
+      stroke: "var(--axis)", "stroke-width": 1 }));
+
+    var xt = svgEl("text", { x: (m.l + W - m.r) / 2, y: H - 6, "text-anchor": "middle",
+      fill: "var(--ink-2)", "font-size": 12 });
+    xt.textContent = opt.xLabel;
+    svg.appendChild(xt);
+    var yt = svgEl("text", { x: 0, y: 0, "text-anchor": "middle", fill: "var(--ink-2)",
+      "font-size": 12, transform: "translate(13," + (m.t + (H - m.t - m.b) / 2) + ") rotate(-90)" });
+    yt.textContent = opt.yLabel;
+    svg.appendChild(yt);
+
+    /* 4象限の意味を隅に書いておく。点の位置がそのまま解釈になる */
+    if (opt.quadrants) {
+      [["tl", m.l + 6, m.t + 12, "start"], ["tr", W - m.r - 6, m.t + 12, "end"],
+       ["bl", m.l + 6, H - m.b - 7, "start"], ["br", W - m.r - 6, H - m.b - 7, "end"]
+      ].forEach(function (q) {
+        var txt = opt.quadrants[q[0]];
+        if (!txt) return;
+        var t = svgEl("text", { x: q[1], y: q[2], "text-anchor": q[3],
+          fill: "var(--muted)", "font-size": 11 });
+        t.textContent = txt;
+        svg.appendChild(t);
+      });
+    }
+
+    /* 軸を固定したときは、はみ出した点を軸の外に描かない */
+    var plot = svgEl("g", {});
+    if (opt.xRange || opt.yRange) {
+      var cid = uid("clip");
+      var cp = svgEl("clipPath", { id: cid });
+      cp.appendChild(svgEl("rect", { x: m.l, y: m.t,
+        width: W - m.l - m.r, height: H - m.t - m.b }));
+      svg.appendChild(cp);
+      plot.setAttribute("clip-path", "url(#" + cid + ")");
+    }
+    svg.appendChild(plot);
+
+    var marks = [];
+    use.forEach(function (p) {
+      var slot = state.slot[p.raceId] || 0;
+      var c = markEl(shapeOf(slot), px(p.x), py(p.y), 4.5);
+      c.setAttribute("fill", colorOf(slot));
+      c.setAttribute("fill-opacity", 0.85);
+      c.setAttribute("stroke", "var(--surface-1)");
+      c.setAttribute("stroke-width", 1.2);
+      plot.appendChild(c);
+      marks.push({ p: p, c: c });
+    });
+
+    if (outside) {
+      /* 目盛りラベルの行に置くと数字とぶつかるので、軸名と同じ行の右端に出す */
+      var on = svgEl("text", { x: W - m.r, y: H - 6, "text-anchor": "end",
+        fill: "var(--muted)", "font-size": 11 });
+      on.textContent = "軸の外 " + outside + "点";
+      svg.appendChild(on);
+    }
+
+    wrap.appendChild(svg);
+    host.appendChild(wrap);
+    var tip = tooltip(wrap);
+
+    svg.addEventListener("mousemove", function (ev) {
+      var box = svg.getBoundingClientRect();
+      var sx = (ev.clientX - box.left) / box.width * W;
+      var sy = (ev.clientY - box.top) / box.height * H;
+      var best = null, bd = 1e9;
+      marks.forEach(function (mk) {
+        if (state.off[mk.p.raceId] || !inRange(mk.p)) return;
+        var dx = px(mk.p.x) - sx, dy = py(mk.p.y) - sy, d = dx * dx + dy * dy;
+        if (d < bd) { bd = d; best = mk; }
+      });
+      if (!best || bd > 400) { tip.hide(); return; }
+      var dot = colorOf(state.slot[best.p.raceId] || 0);
+      tip.show('<div class="row"><span class="dot" style="background:' + dot + '"></span><b>' +
+        esc(best.p.label) + "</b></div>" + esc(best.p.sub) +
+        "<br>" + opt.xLabel + " <b>" + fmt(best.p.x, opt.xDec) + "</b>" +
+        "<br>" + opt.yLabel + " <b>" + fmt(best.p.y, opt.yDec) + "</b>",
+        (ev.clientX - box.left) / box.width * wrap.clientWidth,
+        (ev.clientY - box.top) / box.height * (wrap.clientHeight || H));
+    });
+    svg.addEventListener("mouseleave", function () { tip.hide(); });
+
+    function repaint() {
+      marks.forEach(function (mk) {
+        mk.c.style.display = state.off[mk.p.raceId] ? "none" : "";
+      });
+    }
+    repaint();
+    return repaint;
+  }
+
+  /* ------------------------------------------------ PBI 発散バー */
+
+  function pbiBars(host, races, state) {
+    var all = races.filter(function (r) { return r.dPbi !== null && r.dPbi !== undefined; });
+    if (!all.length) {
+      host.innerHTML = "";
+      host.appendChild(el("p", "empty", "同条件のPBI平年値を引けるレースがありません"));
+      return null;
+    }
+    /* 行が縦に積むので、非表示のレースは詰めて描き直す */
+    function draw() {
+    host.innerHTML = "";
+    var use = all.filter(function (r) { return !state.off[r.id]; });
+    if (!use.length) { host.appendChild(el("p", "empty", "表示するレースがありません")); return; }
+
+    var rowH = 22, W = 900, m = { t: 30, r: 46, b: 32, l: 150 };
+    var H = m.t + use.length * rowH + m.b;
+    /* 目盛りの幅は表示中のレースで変えない(全レースの最大で固定) */
+    var lim = Math.max(3, Math.ceil(Math.max.apply(null, all.map(function (r) {
+      return Math.abs(r.dPbi); }))));
+    var px = function (v) { return m.l + (v + lim) / (2 * lim) * (W - m.l - m.r); };
+    var rowY = function (i) { return m.t + i * rowH + rowH / 2; };
+
+    var wrap = el("div", "chart");
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "img" });
+    svg.appendChild(svgEl("title", {})).textContent = "ΔPBI (同条件の平年値との差) のレース別一覧";
+
+    var xT = niceTicks(-lim, lim, 6);
+    xT.ticks.forEach(function (v) {
+      if (v < -lim || v > lim) return;
+      svg.appendChild(svgEl("line", { x1: px(v), x2: px(v), y1: m.t, y2: H - m.b,
+        stroke: "var(--grid)", "stroke-width": 1 }));
+      var lb = svgEl("text", { x: px(v), y: H - m.b + 16, "text-anchor": "middle",
+        fill: "var(--muted)", "font-size": 11 });
+      lb.textContent = v.toFixed(xT.dec);
+      svg.appendChild(lb);
+    });
+    svg.appendChild(svgEl("line", { x1: px(0), x2: px(0), y1: m.t, y2: H - m.b,
+      stroke: "var(--axis)", "stroke-width": 1 }));
+
+    [[px(0) - 10, "end", "← 平年より後ろ有利"], [px(0) + 10, "start", "平年より前有利 →"]
+    ].forEach(function (o) {
+      var t = svgEl("text", { x: o[0], y: m.t - 10, "text-anchor": o[1],
+        fill: "var(--ink-2)", "font-size": 11 });
+      t.textContent = o[2];
+      svg.appendChild(t);
+    });
+    var band = svgEl("text", { x: px(0), y: H - 4, "text-anchor": "middle",
+      fill: "var(--muted)", "font-size": 11 });
+    band.textContent = "0 = 同じ場・コース・距離・クラス帯の平年値";
+    svg.appendChild(band);
+
+    var marks = [];
+    use.forEach(function (r, i) {
+      var y = rowY(i);
+      var lb = svgEl("text", { x: m.l - 10, y: y + 4, "text-anchor": "end",
+        fill: "var(--ink-2)", "font-size": 11.5 });
+      lb.textContent = shortLabel(r) + " " + (r.distance || "?") + "m " + r.fieldSize + "頭";
+      svg.appendChild(lb);
+
+      /* 前有利/後ろ有利はバーの向きが示すので、色はレースの識別に使う */
+      var x0 = px(0), x1 = px(r.dPbi);
+      var bar = svgEl("rect", { x: Math.min(x0, x1), y: y - 7, width: Math.abs(x1 - x0) || 1,
+        height: 14, rx: 2, fill: colorOf(state.slot[r.id] || 0), "fill-opacity": 0.85 });
+      svg.appendChild(bar);
+
+      var val = svgEl("text", { x: x1 + (r.dPbi >= 0 ? 6 : -6), y: y + 4,
+        "text-anchor": r.dPbi >= 0 ? "start" : "end",
+        fill: "var(--ink-2)", "font-size": 11.5 });
+      val.textContent = sgn(r.dPbi, 1);
+      svg.appendChild(val);
+
+      marks.push({ r: r, bar: bar, label: lb, y: y });
+    });
+
+    wrap.appendChild(svg);
+    host.appendChild(wrap);
+    var tip = tooltip(wrap);
+
+    svg.addEventListener("mousemove", function (ev) {
+      var box = svg.getBoundingClientRect();
+      var sy = (ev.clientY - box.top) / box.height * H;
+      var i = Math.floor((sy - m.t) / rowH);
+      if (i < 0 || i >= marks.length) { tip.hide(); return; }
+      var r = marks[i].r;
+      tip.show("<b>" + esc(longLabel(r)) + "</b><br>" +
+        esc(r.distText) + " " + esc(r.cls) + " / " + r.fieldSize + "頭<br>" +
+        "ΔPBI <b>" + sgn(r.dPbi, 1) + "</b>  (PBI " + sgn(r.pbi, 1) +
+        " / 平年 " + sgn(r.pbiNorm, 1) + "・" + r.pbiNormN + "R" +
+        (r.pbiNormRelaxed ? " ※距離まとめ" : "") + ")<br>" +
+        "Δ前後半差 <b>" + sgn(r.dFb) + "</b>  (生 " + sgn(r.frontBack) + ")<br>" +
+        "4角通過(着順) " + esc(r.corner4Conv),
+        (ev.clientX - box.left) / box.width * wrap.clientWidth,
+        (ev.clientY - box.top) / box.height * (wrap.clientHeight || H));
+    });
+    svg.addEventListener("mouseleave", function () { tip.hide(); });
+    }
+
+    draw();
+    return draw;
+  }
+
+  /* ------------------------------------------------ 3区間の平均比(折れ線) */
+  var SEGS = [["dTen", "テン3F"], ["dMid", "中間3F"], ["dFin", "上り3F"]];
+
+  function devLines(host, races, state) {
+    host.innerHTML = "";
+    var use = races.filter(function (r) { return r.dTen !== null || r.dFin !== null; });
+    if (!use.length) {
+      host.appendChild(el("p", "empty", "同条件の平均を引けるレースがありません"));
+      return null;
+    }
+
+    var W = 900, H = 300, m = { t: 16, r: 16, b: 46, l: 52 };
+    var vals = [];
+    use.forEach(function (r) {
+      SEGS.forEach(function (s) { if (r[s[0]] !== null && r[s[0]] !== undefined) vals.push(r[s[0]]); });
+    });
+    vals.push(0.4); vals.push(-0.4);   /* 差が小さい日でも目盛りが潰れないように */
+    var yT = niceTicks(Math.min.apply(null, vals), Math.max.apply(null, vals), 6);
+    var px = function (i) { return m.l + (i + 0.5) / SEGS.length * (W - m.l - m.r); };
+    var py = function (v) { return m.t + (yT.hi - v) / (yT.hi - yT.lo) * (H - m.t - m.b); };
+
+    var wrap = el("div", "chart");
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "img" });
+    svg.appendChild(svgEl("title", {})).textContent = "3区間の同条件平均との差";
+
+    yT.ticks.forEach(function (v) {
+      svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: py(v), y2: py(v),
+        stroke: "var(--grid)", "stroke-width": 1 }));
+      var lb = svgEl("text", { x: m.l - 8, y: py(v) + 4, "text-anchor": "end",
+        fill: "var(--muted)", "font-size": 11 });
+      lb.textContent = sgn(v, yT.dec);
+      svg.appendChild(lb);
+    });
+    /* 0 = 同条件平均。この図の読みは全てこの線との上下なので、
+       目盛り線と見分けがつくようはっきり引く(太さ・濃さ・ラベルの縁取り) */
+    svg.appendChild(svgEl("line", { x1: m.l, x2: W - m.r, y1: py(0), y2: py(0),
+      stroke: "var(--ink-1)", "stroke-width": 2.5, "stroke-opacity": 0.75 }));
+    var zl = svgEl("text", { x: W - m.r, y: py(0) - 7, "text-anchor": "end",
+      fill: "var(--ink-2)", "font-size": 11, "font-weight": 650,
+      stroke: "var(--surface-1)", "stroke-width": 3.5, "paint-order": "stroke" });
+    zl.textContent = "同条件平均 (0秒)";
+    svg.appendChild(zl);
+
+    SEGS.forEach(function (s, i) {
+      var lb = svgEl("text", { x: px(i), y: H - m.b + 18, "text-anchor": "middle",
+        fill: "var(--ink-2)", "font-size": 12 });
+      lb.textContent = s[1];
+      svg.appendChild(lb);
+    });
+    var yt = svgEl("text", { x: 0, y: 0, "text-anchor": "middle", fill: "var(--ink-2)",
+      "font-size": 12, transform: "translate(13," + (m.t + (H - m.t - m.b) / 2) + ") rotate(-90)" });
+    yt.textContent = "平均との差 (秒 / 上=遅い)";
+    svg.appendChild(yt);
+
+    var marks = [];
+    use.forEach(function (r) {
+      var idx = r._slot;
+      var pts = [];
+      SEGS.forEach(function (s, i) {
+        var v = r[s[0]];
+        if (v !== null && v !== undefined) pts.push([i, v]);
+      });
+      if (!pts.length) return;
+      var g = svgEl("g", {});
+      /* 中間3F が出ない距離(6ハロン以下)はテンと上りを直接つなぐ */
+      var d = pts.map(function (p, k) {
+        return (k ? "L" : "M") + px(p[0]).toFixed(1) + " " + py(p[1]).toFixed(1);
+      }).join(" ");
+      var path = svgEl("path", { d: d, fill: "none", stroke: colorOf(idx),
+        "stroke-width": 2.2, "stroke-linejoin": "round", "stroke-linecap": "round" });
+      if (dashOf(idx)) path.setAttribute("stroke-dasharray", dashOf(idx));
+      g.appendChild(path);
+      pts.forEach(function (p) {
+        var c = markEl(shapeOf(idx), px(p[0]), py(p[1]), 4);
+        c.setAttribute("fill", colorOf(idx));
+        c.setAttribute("stroke", "var(--surface-1)");
+        c.setAttribute("stroke-width", 1.2);
+        g.appendChild(c);
+      });
+      svg.appendChild(g);
+      marks.push({ r: r, g: g, path: path, idx: idx, pts: pts });
+    });
+
+    wrap.appendChild(svg);
+    host.appendChild(wrap);
+    var tip = tooltip(wrap);
+
+    /* 線が重なると追えなくなるので、カーソルに近いレースだけを前面に出す */
+    var hover = null;
+    function paint() {
+      marks.forEach(function (mk) {
+        mk.g.style.display = state.off[mk.r.id] ? "none" : "";
+        var dim = hover !== null && hover !== mk.r.id;
+        mk.g.setAttribute("opacity", dim ? 0.15 : 1);
+        mk.path.setAttribute("stroke-width", hover === mk.r.id ? 3.6 : 2.2);
+      });
+      if (hover !== null) {
+        for (var i = 0; i < marks.length; i++) {
+          if (marks[i].r.id === hover) { svg.appendChild(marks[i].g); break; }
+        }
+      }
+    }
+
+    svg.addEventListener("mousemove", function (ev) {
+      var box = svg.getBoundingClientRect();
+      var sx = (ev.clientX - box.left) / box.width * W;
+      var sy = (ev.clientY - box.top) / box.height * H;
+      var best = null, bd = 1e9;
+      marks.forEach(function (mk) {
+        if (state.off[mk.r.id]) return;
+        mk.pts.forEach(function (p) {
+          var dx = px(p[0]) - sx, dy = py(p[1]) - sy, d = dx * dx + dy * dy;
+          if (d < bd) { bd = d; best = mk; }
+        });
+      });
+      if (!best || bd > 500) {
+        tip.hide();
+        if (hover !== null) { hover = null; paint(); }
+        return;
+      }
+      if (hover !== best.r.id) { hover = best.r.id; paint(); }
+      var r = best.r;
+      tip.show('<div class="row"><span class="dot" style="background:' +
+        colorOf(r._slot) + '"></span><b>' +
+        esc(longLabel(r)) + "</b></div>" + esc(r.distText) + " " + esc(r.cls) + "<br>" +
+        "テン <b>" + sgn(r.dTen, 1) + "</b>  中間 <b>" + sgn(r.dMid, 1) +
+        "</b>  上り <b>" + sgn(r.dFin, 1) + "</b><br>" +
+        "実測 " + fmt(r.ten3f) + " / " + fmt(r.mid3f) + " / " + fmt(r.fin3f) + "<br>" +
+        "平均 " + fmt(r.normTen) + " / " + fmt(r.normMid) + " / " + fmt(r.normFin) +
+        " (" + r.normN + "R" + (r.normRelaxed ? " ※クラス緩和" : "") + ")",
+        (ev.clientX - box.left) / box.width * wrap.clientWidth,
+        (ev.clientY - box.top) / box.height * (wrap.clientHeight || H));
+    });
+    svg.addEventListener("mouseleave", function () {
+      tip.hide();
+      if (hover !== null) { hover = null; paint(); }
+    });
+
+    paint();
+    return paint;
+  }
+
+  /* ------------------------------------------------ その日の総括 */
+  function mean(xs) {
+    var v = xs.filter(function (x) { return x !== null && x !== undefined; });
+    return v.length ? v.reduce(function (a, b) { return a + b; }, 0) / v.length : null;
+  }
+
+  /* 個々のレースより平均のほうがぶれないので、判定のしきい値は表より小さくする */
+  var DAY_TH = 0.2;
+
+  function dayVerdict(mFront, mFin) {
+    if (mFront === null || mFin === null) return ["", ""];
+    var slowFin = mFin >= DAY_TH, fastFin = mFin <= -DAY_TH;
+    var slowFront = mFront >= DAY_TH, fastFront = mFront <= -DAY_TH;
+    if (slowFront && slowFin) return ["タフな馬場", "流れは緩いのに上りがかかっている。時計を要する馬場。"];
+    if (fastFront && fastFin) return ["軽い馬場", "速い流れでも上りが出ている。時計の出やすい馬場。"];
+    if (fastFront && slowFin) return ["消耗戦", "前半が速く流れた分だけ上りがかかっている。ペースなりで馬場の情報は薄い。"];
+    if (slowFront && fastFin) return ["瞬発戦", "緩い流れから上りが速い。ペースなりで馬場の情報は薄い。"];
+    if (slowFin) return ["やや上りがかかる", "前半は平均並みだが上りがかかっている。"];
+    if (fastFin) return ["やや上りが出る", "前半は平均並みだが上りが速い。"];
+    return ["標準", "前半・上りとも同条件の平均並み。"];
+  }
+
+  /* その日の総括はラップだけで書く。
+     PBI をここで平均しても意味がないことを実データで確かめたため
+     (コース・クラスの恒常差を除くと ICC=0.02、午前の平均は午後を r=0.04 でしか
+     予測しない)。ラップ側は ICC=0.30、午前→午後 r=0.57 で日単位の指標になる。 */
+  function verdictBox(host, races, label) {
+    host.innerHTML = "";
+    var mFront = mean(races.map(function (r) { return r.dFront; }));
+    var mFin = mean(races.map(function (r) { return r.dFin; }));
+    var withNorm = races.filter(function (r) { return r.normN; }).length;
+
+    host.appendChild(el("div", "head", label + " " + races.length + "R の総括"));
+
+    var l2 = el("div", "line");
+    if (mFront !== null || mFin !== null) {
+      l2.innerHTML = "同条件平均との差: 前半 <b>" + sgn(mFront, 2) + "</b>秒 / 上り <b>" +
+        sgn(mFin, 2) + "</b>秒 (" + withNorm + "/" + races.length + "R で基準あり)";
+    } else {
+      l2.innerHTML = "同条件の平均を引けるレースがありませんでした";
+    }
+    host.appendChild(l2);
+
+    var v = dayVerdict(mFront, mFin);
+    if (v[0]) {
+      var c = el("div", "concl");
+      c.innerHTML = "<b>" + esc(v[0]) + "</b> — " + esc(v[1]);
+      host.appendChild(c);
+    }
+  }
+
+  /* ------------------------------------------------ 組み立て */
+  function esc(s) {
+    return String(s === null || s === undefined ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function buildSurface(section, races, label) {
+    /* 色はレース番号で固定して全グラフ共通。
+       表示/非表示を持つのは散布図だけで、馬場読みとラップ推移は常に全レースを描く。 */
+    var slot = {};
+    races.forEach(function (r) { slot[r.id] = r._slot; });
+    var allState = { off: {}, slot: slot };   /* off を触らない = 常に全表示 */
+    var state = { off: {}, slot: slot };      /* 凡例で切り替える = 散布図用 */
+    var repaints = [];
+
+    /* 馬場読み */
+    var vHost = section.querySelector(".verdict");
+    if (vHost) verdictBox(vHost, races, label);
+    var barHost = section.querySelector(".pbi-bars");
+    if (barHost) pbiBars(barHost, races, allState);
+    var devHost = section.querySelector(".lapdev");
+    if (devHost) devLines(devHost, races, allState);
+
+    /* ラップ推移 */
+    var lapHost = section.querySelector(".lapchart");
+    if (lapHost) lineChart(lapHost, races, { title: label + " ラップ推移", refValue: 12.0 }, allState);
+
+    var horsePts = [];
+    races.forEach(function (r) {
+      r.horses.forEach(function (h) {
+        horsePts.push({
+          raceId: r.id, label: h.finish + "着 " + h.name,
+          sub: longLabel(r) + " / " + h.jockey,
+          marginSec: h.marginSec, last3f: h.last3fN, umaban: h.umabanN,
+          corner4: h.corner4N
+        });
+      });
+    });
+    var racePts = races.map(function (r) {
+      return {
+        raceId: r.id, label: longLabel(r),
+        sub: r.distText + " " + r.cls + " / 勝ち " + r.winTime,
+        frontBack: r.frontBack, vsAvg: r.vsAvg, dPbi: r.dPbi, dFb: r.dFb,
+        dFront: r.dFront, dFin: r.dFin,
+        distance: r.distance, winLast3f: parseFloat(r.winLast3f) || null
+      };
+    });
+
+    /* always: true は馬場読みの図。凡例の対象外で、常に全レースを描く */
+    var defs = [
+      { sel: ".sc-fb-pbi", always: true, pts: racePts, xKey: "dFb", yKey: "dPbi",
+        xLabel: "Δ前後半差 (秒/右=平年より後傾)", yLabel: "ΔPBI (平年比)", xDec: 2, yDec: 1,
+        zeroX: true, zeroY: true, xRange: [-3, 3], yRange: [-3, 3],
+        title: label + " Δ前後半差 × ΔPBI",
+        quadrants: { tl: "前が止まらない = 平年より前有利", tr: "順当な前残り",
+                     bl: "順当な差し決着", br: "差しが決まる = 平年より前不利" } },
+      { sel: ".sc-tough", always: true, pts: racePts, xKey: "dFront", yKey: "dFin",
+        xLabel: "前半3F換算 平均比 (秒/右=遅い)", yLabel: "上り3F 平均比 (秒/上=かかる)",
+        xDec: 2, yDec: 2, zeroX: true, zeroY: true, title: label + " 前半 × 上り (平均比)",
+        quadrants: { tl: "消耗戦 (ペースなり)", tr: "★タフな馬場",
+                     bl: "★軽い馬場", br: "瞬発戦 (ペースなり)" } },
+      { sel: ".sc-margin-last3f", pts: horsePts, xKey: "marginSec", yKey: "last3f",
+        xLabel: "着差 (秒)", yLabel: "上り3F (秒)", xDec: 1, yDec: 1, zeroX: true,
+        title: label + " 着差 × 上り3F" },
+      { sel: ".sc-margin-umaban", pts: horsePts, xKey: "marginSec", yKey: "umaban",
+        xLabel: "着差 (秒)", yLabel: "馬番", xDec: 1, yDec: 0, zeroX: true,
+        title: label + " 着差 × 馬番" },
+      { sel: ".sc-corner4-last3f", pts: horsePts, xKey: "corner4", yKey: "last3f",
+        xLabel: "4コーナー順位 (1=先頭)", yLabel: "上り3F (秒)", xDec: 0, yDec: 1,
+        title: label + " 4コーナー順位 × 上り3F" },
+      { sel: ".sc-dist-last3f", pts: racePts, xKey: "distance", yKey: "winLast3f",
+        xLabel: "距離 (m)", yLabel: "勝ち馬の上り3F (秒)", xDec: 0, yDec: 1,
+        title: label + " 距離 × 上り3F" }
+    ];
+
+    defs.forEach(function (d) {
+      var host = section.querySelector(d.sel);
+      if (!host) return;
+      var pts = d.pts.map(function (p) {
+        return { raceId: p.raceId, label: p.label, sub: p.sub, x: p[d.xKey], y: p[d.yKey] };
+      });
+      var rp = scatter(host, pts, d, d.always ? allState : state);
+      if (rp && !d.always) repaints.push(rp);
+    });
+
+    /* 凡例: 散布図4枚の表示/非表示だけを司る */
+    var chips = section.querySelector(".chips");
+    if (chips) {
+      var buttons = [];
+      function refresh() {
+        buttons.forEach(function (o) {
+          o.b.setAttribute("aria-pressed", state.off[o.id] ? "false" : "true");
+        });
+        repaints.forEach(function (f) { f(); });
+      }
+      races.forEach(function (r) {
+        var b = el("button");
+        b.setAttribute("aria-pressed", "true");
+        var sw = el("span", "swatch" + (dashOf(r._slot) ? " dash" : ""));
+        sw.style.background = colorOf(r._slot);
+        sw.style.color = colorOf(r._slot);
+        b.appendChild(sw);
+        b.appendChild(document.createTextNode(shortLabel(r)));
+        b.title = r.name;
+        b.addEventListener("click", function () {
+          state.off[r.id] = !state.off[r.id];
+          refresh();
+        });
+        buttons.push({ b: b, id: r.id });
+        chips.appendChild(b);
+      });
+
+      /* 系列が多いときは一括切替がないと使いづらい */
+      if (races.length > 6) {
+        [["全表示", false], ["全非表示", true]].forEach(function (o) {
+          var b = el("button", null, o[0]);
+          b.addEventListener("click", function () {
+            races.forEach(function (r) { state.off[r.id] = o[1]; });
+            refresh();
+          });
+          chips.appendChild(b);
+        });
+      }
+    }
+  }
+
+  document.querySelectorAll("section[data-surface]").forEach(function (sec) {
+    var code = sec.dataset.surface;
+    var races = D.races.filter(function (r) { return r.surface === code; });
+    races.forEach(function (r, i) { r._slot = i; });
+    buildSurface(sec, races, sec.dataset.label);
+  });
+
+  /* テーマ切替 */
+  var btn = document.getElementById("themebtn");
+  if (btn) btn.addEventListener("click", function () {
+    var cur = document.documentElement.getAttribute("data-theme");
+    var next = cur === "dark" ? "light" : cur === "light" ? "dark"
+      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", next);
+    btn.textContent = next === "dark" ? "ライト表示" : "ダーク表示";
+  });
+})();
+</script>
+</body>
+</html>
