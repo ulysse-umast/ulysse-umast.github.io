@@ -2,7 +2,7 @@
 
 競馬のレース結果レポートを静的HTMLで公開しています。
 
-**公開URL: https://ulysse.github.io/umast-reports/**
+**公開URL: https://tomosu49-web.github.io/umast-reports/**
 
 ## 中身
 
