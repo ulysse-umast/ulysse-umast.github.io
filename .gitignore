@@ -18,6 +18,7 @@
 !.nojekyll
 !README.md
 !index.html
+!terms.html
 !reports/**/*.html
 
 # 4) 念のため、絶対に公開してはいけないものは明示的に再無視
