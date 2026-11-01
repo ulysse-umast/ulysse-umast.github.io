@@ -6,10 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
 <title>UMASTカルテ　利用規約</title>
-<style>
-/* terms.html - UMASTカルテ 利用規約（2026-11-01。中身は Claude Docs の「UMASTカルテ 利用規約」が正。見た目は manual.html と同じ）
-   karte.css と同じデザイントークンを使う（単独で開けるよう自己完結にしてある）。 */
-:root {
+<style>:root {
   color-scheme: light;
   --surface-1: #fcfcfb;
   --surface-2: #f2f2ef;
@@ -71,7 +68,6 @@
   --critical: #e05a5a;
   --accent: #3987e5;
 }
-
 * { box-sizing: border-box; }
 body {
   margin: 0;
@@ -83,7 +79,6 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 .wrap { max-width: 900px; margin: 0 auto; padding: 20px 18px 90px; }
-
 header.top {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
   padding-bottom: 14px; margin-bottom: 18px;
@@ -99,8 +94,6 @@ header.top .spacer { flex: 1 1 auto; }
   text-decoration: none; display: inline-block;
 }
 .btn:hover { color: var(--ink-1); }
-
-/* 目次 */
 nav.toc {
   background: var(--surface-1); border: 1px solid var(--border);
   border-radius: 10px; padding: 12px 16px; margin-bottom: 28px;
@@ -111,7 +104,6 @@ nav.toc ol ol { padding-left: 18px; }
 nav.toc li { font-size: 14px; line-height: 1.7; }
 nav.toc a { color: var(--ink-1); text-decoration: none; }
 nav.toc a:hover { text-decoration: underline; }
-
 h2 {
   font-size: 19px; margin: 46px 0 14px; padding-bottom: 8px;
   border-bottom: 2px solid var(--accent); scroll-margin-top: 12px;
@@ -133,8 +125,6 @@ strong { font-weight: 700; }
 em { font-style: normal; background: var(--shade); padding: 0 3px; border-radius: 3px; }
 .lead { font-size: 16px; }
 .muted { color: var(--ink-2); font-size: 13.5px; }
-
-/* 囲み */
 .card {
   background: var(--surface-1); border: 1px solid var(--border);
   border-radius: 10px; padding: 14px 16px; margin: 18px 0;
@@ -147,8 +137,6 @@ em { font-style: normal; background: var(--shade); padding: 0 3px; border-radius
 }
 .point .t { font-weight: 700; display: block; margin-bottom: 2px; }
 .note { color: var(--ink-2); font-size: 13.5px; margin: 10px 0; }
-
-/* 図 */
 figure { margin: 20px 0; }
 figure svg { width: 100%; height: auto; display: block; }
 figcaption { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
@@ -158,16 +146,12 @@ figcaption { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
            font-family: system-ui, "Yu Gothic UI", sans-serif; }
 .dg text.k { fill: var(--ink-1); font-weight: 700; }
 .dg text.s { font-size: 11px; fill: var(--muted); }
-
-/* 表 */
 table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 14px 0; }
 .tscroll { overflow-x: auto; }
 th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left;
          vertical-align: top; line-height: 1.8; }
 th { background: var(--surface-2); font-weight: 650; white-space: nowrap; }
 td.c, th.c { text-align: center; white-space: nowrap; }
-
-/* チップ */
 .chip {
   display: inline-block; border-radius: 4px; padding: 0 7px;
   font-size: 12.5px; font-weight: 700; color: #111; white-space: nowrap;
@@ -182,13 +166,11 @@ td.c, th.c { text-align: center; white-space: nowrap; }
 .bad  { color: var(--eval-bad);  font-weight: 700; }
 .g    { color: var(--good);      font-weight: 700; }
 .r    { color: var(--critical);  font-weight: 700; }
-/* AIねらい目の金・銀（カルテと同じ色） */
 :root { --ai-gold: #a87400; --ai-silver: #7b828c; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ai-gold: #e6b84a; --ai-silver: #c5ccd5; } }
 :root[data-theme="dark"] { --ai-gold: #e6b84a; --ai-silver: #c5ccd5; }
 .ai-gold { color: var(--ai-gold); font-weight: 800; }
 .ai-silver { color: var(--ai-silver); font-weight: 700; }
-
 a.link { color: var(--accent); }
 footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--border);
          color: var(--ink-2); font-size: 13px; }
@@ -199,8 +181,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--border
 .terms ol ol > li { counter-increment: sub; position: relative; }
 .terms ol ol > li::before { content: "(" counter(sub) ")"; position: absolute; left: -2em; }
 .terms li { margin: 6px 0; line-height: 1.8; }
-.terms .date { color: var(--ink-2); font-size: 13px; }
-</style>
+.terms .date { color: var(--ink-2); font-size: 13px; }</style>
 </head>
 <body>
 <div class="wrap">
@@ -228,20 +209,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--border
 <li>「第三者」とは、利用者本人と運営者以外のすべての人をいい、家族・知人・同じ団体の人も含みます。</li>
 </ol>
 
-<h2>第2条（利用できる範囲）</h2>
-<ol>
-<li>利用者は、本人の個人的な競馬研究・予想のために限り、本サービスを利用できます。</li>
-<li>利用者は、前項の目的のために、次のことを行えます。
-<ol>
-<li>自分で開いたカルテを、自分の端末に保存すること。</li>
-<li>カルテの情報を、自分で書き写したり、整理・比較・集計したりすること。</li>
-<li>前2号で保存・加工した情報を、本人だけがアクセスできる場所（自分のパソコン、非公開のクラウド保存先やリポジトリなど）に蓄積し、継続して使うこと。</li>
-</ol></li>
-<li>非公開の保存先を使う場合、公開設定への切り替えや公開ページの作成（例: 非公開リポジトリからの GitHub Pages）によって、第三者が見られる状態にならないよう、利用者が管理します。漏えいによって生じた結果は、利用者が責任を負います。</li>
-<li>本サービスの著作権その他の権利は運営者（または正当な権利者）に属します。本規約で認めるもののほかに、利用者に権利を譲渡・許諾するものではありません。</li>
-</ol>
-
-<h2>第3条（禁止事項）</h2>
+<h2>第2条（禁止事項）</h2>
 <p>利用者は、次のことをしてはいけません。無償か有償か、一部か全部か、加工したかどうかを問いません。</p>
 <ol>
 <li><b>商業利用</b>: コンテンツを、販売、有料の予想配信・サロン・講座、広告収入を得るサイトや動画、自社の商品・サービスの開発など、収益につながる目的で使うこと。</li>
@@ -252,13 +220,13 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--border
 <li>本サービスの運営を妨げること、法令や公序良俗に反すること、その他運営者が不適切と判断すること。</li>
 </ol>
 
-<h2>第4条（解約後の扱い）</h2>
+<h2>第3条（解約後の扱い）</h2>
 <ol>
-<li>解約後も、利用期間中に保存したカルテと加工・集計したデータは、第2条の範囲で引き続き使えます。</li>
-<li>解約後も、第3条は引き続き適用されます。</li>
+<li>解約後も、利用期間中に保存したカルテと加工・集計したデータは、引き続き本人の個人的な競馬研究に使えます。</li>
+<li>解約後も、第2条は引き続き適用されます。</li>
 </ol>
 
-<h2>第5条（内容の正確さと不具合）</h2>
+<h2>第4条（内容の正確さと不具合）</h2>
 <ol>
 <li>コンテンツは、元データの誤り・更新の遅れ・プログラムの不具合（バグ）などにより、誤りや欠けを含むことがあります。運営者は、コンテンツの正確さ・完全さ・有用さを保証しません。</li>
 <li>運営者は、不具合に気づいたときは、できる範囲で修正に努めます。ただし、修正の時期や、配信済みのカルテを差し替えるかどうかは、運営者が決めます。</li>
@@ -266,33 +234,21 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--border
 <li>運営者は、前3項によって利用者に生じた損害について、責任を負いません。</li>
 </ol>
 
-<h2>第6条（馬券について）</h2>
+<h2>第5条（馬券について）</h2>
 <ol>
 <li>コンテンツ（指数・スコア・印・展開予想・過去の成績や回収率など）は、競馬研究のための参考情報です。的中や利益を約束するものではありません。過去の成績は、将来の結果を保証しません。</li>
 <li>馬券を買うかどうか、何をいくら買うかは、利用者自身の判断と責任で決めてください。</li>
-<li>運営者は、利用者が購入した馬券の結果と、それによって生じた損失について、理由を問わず責任を負いません。第5条の不具合があった場合も同じです。</li>
+<li>運営者は、利用者が購入した馬券の結果と、それによって生じた損失について、理由を問わず責任を負いません。第4条の不具合があった場合も同じです。</li>
 <li>馬券は、20歳未満の方は購入できません。無理のない範囲で楽しんでください。</li>
 </ol>
 
-<h2>第7条（責任の範囲）</h2>
+<h2>第6条（責任の範囲）</h2>
 <ol>
 <li>本規約で運営者が責任を負わないと定めた場合でも、運営者に故意または重大な過失があるときは、この限りではありません。</li>
 <li>運営者が責任を負う場合も、その額は、損害が生じた月に利用者が支払った利用料を上限とします（運営者に重大な過失がある場合を除きます）。</li>
 </ol>
 
-<h2>第8条（違反した場合）</h2>
-<ol>
-<li>利用者が本規約に違反した場合、運営者は、予告なく本サービスの提供を止めることができます。支払済みの利用料は返しません。</li>
-<li>運営者は、違反した利用者に、公開した情報の削除を求め、生じた損害の賠償を請求できます。</li>
-</ol>
-
-<h2>第9条（規約の変更）</h2>
-<p>運営者は、必要に応じて本規約を変えられます。変えるときは、変える内容と変更日を、取扱説明書などで事前に知らせます。変更日以降に利用した場合は、変更後の規約に同意したものとみなします。</p>
-
-<h2>第10条（準拠法・管轄）</h2>
-<p>本規約は日本法に従います。本サービスに関する紛争は、運営者の住所地を管轄する地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
-
-<h2>第11条（問い合わせ）</h2>
+<h2>第7条（問い合わせ）</h2>
 <p>本規約や利用方法についての問い合わせは、本サービスの販売ページの問い合わせ機能からお願いします。</p>
 
 <p>附則: 本規約は2026年11月1日から適用します。</p>
@@ -304,8 +260,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--border
 
 </div>
 
-<script>
-(function () {
+<script>(function () {
   var btn = document.getElementById("themebtn");
   function isDark(t) {
     return t === "dark" || (!t && window.matchMedia &&
@@ -320,9 +275,6 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--border
     apply(isDark(document.documentElement.getAttribute("data-theme")) ? "light" : "dark");
   });
   apply(null);
-
-  // カルテから開いたときは、そのカルテの読んでいた位置に戻す。
-  // 直接開かれたときだけ href（同じ場所のカルテ）へ飛ぶ。
   var fromKarte = document.referrer && history.length > 1;
   Array.prototype.forEach.call(document.querySelectorAll("a.back"), function (a) {
     a.addEventListener("click", function (ev) {
@@ -331,7 +283,6 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--border
       history.back();
     });
   });
-})();
-</script>
+})();</script>
 </body>
 </html>
