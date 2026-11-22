@@ -63,7 +63,7 @@ footer a{color:var(--muted)}
 <h1>LAPS指数</h1>
 <p class="sub">11/21（土）〜11/23（月）　1〜12R（新馬戦は除く）。毎週更新</p>
 <div id="app"></div>
-<div class="cta"><b>基本スコア・買い要素・消し要素・買い＆消しポイント</b>（LAPS指数の中身＝どの特徴に当てはまって、それぞれ何%上積みされているか）は、
+<div class="cta"><b>ベース・買いエッジ・消しエッジ・エッジポイント</b>（LAPS指数の中身＝どの特徴に当てはまって、それぞれ何%上積みされているか）は、
 UMASTカルテ メンバーシップ「UMAST CREW」で見られます。カルテではペース・馬場を細かく選べ、戦績・ラップ・コース適性も一緒に確認できます。<br>
 <a href="https://note.com/mgtkeiba/membership" target="_blank" rel="noopener">メンバーシップ「UMAST CREW」</a></div>
 <p class="note">指数は予想の参考です。的中や利益を約束するものではありません。馬券の購入は自己責任でお願いします。</p>
@@ -99,7 +99,7 @@ function render(){
   [['枠',''],['馬番',''],['馬名','name'],['AI展開予想','']].forEach(function(x){r1.appendChild(el('th',{class:x[1],rowspan:'2'},x[0]));});
   var lk=el('th',{class:'lockh',colspan:'6'}); var la=el('a',{href:D.url,target:'_blank',rel:'noopener'},'メンバーシップ限定 ›'); lk.appendChild(la); r1.appendChild(lk);
   r1.appendChild(el('th',{class:'fin',rowspan:'2'},'LAPS指数'));
-  ['基本スコア','買い要素','消し要素','プラス','マイナス','合計'].forEach(function(x){r2.appendChild(el('th',{class:'bl'},x));});
+  ['ベース','買いエッジ','消しエッジ','プラス','マイナス','合計'].forEach(function(x){r2.appendChild(el('th',{class:'bl'},x));});
   th.appendChild(r1); th.appendChild(r2); t.appendChild(th);
   var rows=R.rows.slice(), s=st.s;
   // スロー・ハイでは標準と比べた順位の上下を付ける（PDF の LAPS と同じ）
